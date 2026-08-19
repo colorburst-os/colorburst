@@ -1,0 +1,8 @@
+# Build artifact: the crosvm bundle, produced by tools/build-runtime.sh and
+# attached to releases. See RUNNING-VM.md.
+/runtime/
+
+# Disk images and kernels are shipped as release assets, never committed.
+*.bin
+*.qcow2
+vmlinuz
