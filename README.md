@@ -27,50 +27,35 @@ Chạy được trên máy để bàn hoặc laptop sản xuất trong khoảng 
   khoản nằm trên chính máy của mình. Không cần tài khoản Google, không cần kết
   nối mạng để đăng nhập.
 - **Giao diện tiếng Việt** được đặt làm mặc định.
-- **Gõ tiếng Việt kiểu Telex** có sẵn, không cần cài thêm gì. Chuyển đổi bằng
-  biểu tượng **VI** ở góc dưới bên phải, hoặc Ctrl + Space.
-
-## Dùng thử trong máy ảo
-
-Cách nhanh nhất để xem thử, không ảnh hưởng gì đến máy thật. Cách này chỉ chạy
-trên **Linux**.
-
-Tải tệp ảnh đĩa (`.bin`) và gói `colorburst-vm` ở mục **Releases** của dự án
-trên GitHub (cột bên phải trang chủ kho mã), giải nén cả hai, rồi chạy:
-
-```bash
-./start-vm.sh colorburst.bin
-```
-
-Máy thật cần tối thiểu **4 GB RAM trống** và **16 GB ổ đĩa**. Nếu thiếu thứ gì,
-script sẽ báo và chỉ cách khắc phục.
-
-Tệp ảnh đĩa gốc không bị thay đổi: mọi thay đổi trong máy ảo được ghi vào một
-tệp riêng, xoá đi là quay về ban đầu.
-
-Máy ảo chạy được ngay, nhưng **chưa có mạng**. Muốn duyệt web trong máy ảo,
-chạy thêm một lần duy nhất (cần quyền quản trị, script in ra đúng những gì nó
-làm và có thể gỡ lại bằng `--remove`):
-
-```bash
-sudo ./setup-network.sh
-```
+- **Gõ tiếng Việt có sẵn** — Telex (mặc định), VNI và VIQR, không cần cài thêm
+  gì. Chuyển đổi bằng biểu tượng **VI** ở góc dưới bên phải, hoặc Ctrl + Space.
+- **Tự cập nhật.** Máy nhận các bản vá qua máy chủ cập nhật của colorburst,
+  không qua Google.
 
 ## Dùng thử từ USB
 
 Cách này chạy trên máy thật mà chưa cần cài đặt.
 
-1. Tải tệp ảnh đĩa ở mục **Releases** trên GitHub và chuẩn bị một USB dung
-   lượng từ **16 GB**.
-2. Ghi tệp ảnh đĩa vào USB. Trên Linux:
+1. Tải tệp ảnh đĩa (`colorburst-<phiên bản>.bin.xz`) ở mục **Releases** trên
+   GitHub và chuẩn bị một USB dung lượng từ **16 GB**.
+2. Ghi tệp ảnh đĩa vào USB.
+
+   **Windows / macOS:** dùng [balenaEtcher](https://etcher.balena.io/) — chọn
+   thẳng tệp `.xz`, chương trình tự giải nén rồi ghi.
+
+   **Linux:**
 
    ```bash
-   sudo dd if=colorburst.bin of=/dev/sdX bs=4M status=progress conv=fsync
+   unxz colorburst-<phiên bản>.bin.xz
+   sudo dd if=colorburst-<phiên bản>.bin of=/dev/sdX bs=4M status=progress conv=fsync
    ```
 
    Thay `/dev/sdX` bằng USB của bạn. **Ghi nhầm ổ sẽ xoá sạch dữ liệu ổ đó** —
    hãy kiểm tra kỹ bằng `lsblk`.
-3. Khởi động máy từ USB. Bạn có thể cần tắt **Secure Boot** trong BIOS/UEFI.
+3. Khởi động máy từ USB (thường bấm F12, F2 hoặc Esc lúc mới bật máy). Bạn có
+   thể cần tắt **Secure Boot** trong BIOS/UEFI.
+
+Chạy từ USB không đụng gì đến ổ cứng trong máy.
 
 ## Cài đặt vào máy
 
@@ -117,8 +102,9 @@ Discord: _(sẽ cập nhật)_
 
 ## Hạn chế / TODO
 
-- **Chưa có cập nhật tự động.** Muốn lên bản mới thì phải cài lại.
 - **Chưa khôi phục được mật khẩu** nếu bạn quên.
+- Chạy thử trong máy ảo hiện chỉ dành cho người phát triển, chưa dùng được cho
+  người thường — hãy dùng USB.
 - Nội dung có bản quyền số (DRM) — Netflix và tương tự chưa xem được.
 - Chưa tăng tốc giải mã video bằng phần cứng, nên video nặng sẽ tốn pin hơn.
 - Bộ gõ tiếng Việt mới ở mức cơ bản; người quen gõ nhanh sẽ thấy còn vụng.
