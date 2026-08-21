@@ -299,6 +299,12 @@ step "Khởi động / Starting colorburst…"
 # it damaged, and the *next* boot then loops restarting the browser and never
 # reaches a screen. Everything the system writes lives on the stateful
 # partition, which is a separate, journalled filesystem and stays writable.
+#
+# The disk is attached over virtio-SCSI (/dev/sda), not virtio-blk (/dev/vda):
+# the colorburst kernel builds virtio_blk as a MODULE, so a --block root disk
+# never appears and the guest hangs forever at "Waiting for root device
+# /dev/vda3". (This script shipped with --block from the amd64-generic days,
+# where virtio_blk was built in; it could not boot a colorburst image at all.)
 trap - ERR          # from here on, a non-zero exit is handled, not trapped
 env -u DISPLAY CROSVM_DISPLAY_SCALE="$SCALE" \
 "$CROSVM" run \
@@ -308,9 +314,9 @@ env -u DISPLAY CROSVM_DISPLAY_SCALE="$SCALE" \
     --mem "$MEM" --cpus "$CPUS" \
     --gpu "backend=virglrenderer,context-types=virgl2,egl=true,displays=[[mode=windowed[$W,$H]]]" \
     ${NET_ARGS[@]+"${NET_ARGS[@]}"} \
-    --block "path=$DISK,ro=false" \
+    --scsi-block "path=$DISK,ro=false" \
     --serial "type=file,path=$LOG,hardware=serial,console=true,num=1,earlycon=true" \
-    -p "root=/dev/vda3 ro rootwait noinitrd cros_debug cros_efi loglevel=7 console=ttyS0 earlyprintk=serial,ttyS0,115200 vt.global_cursor_default=0" \
+    -p "root=/dev/sda3 ro rootwait noinitrd cros_debug cros_efi loglevel=7 console=ttyS0 earlyprintk=serial,ttyS0,115200 vt.global_cursor_default=0" \
     "$KERNEL" 2> >(grep --line-buffered -vF 'failed to get wl_buffer for dmabuf' >&2)
 rc=$?
 
