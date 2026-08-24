@@ -1,130 +1,102 @@
 # colorburst
 
-colorburst là một hệ điều hành tự do dành cho máy tính cá nhân. Bạn có thể cài
-đặt, sử dụng, sao chép và chỉnh sửa nó một cách hợp pháp, không phải trả phí
-bản quyền cho bất kỳ ai.
+*[Tiếng Việt](README-vi.md)*
 
-Hệ thống được xây dựng từ mã nguồn của **ChromiumOS** — phần mã nguồn mở mà
-Google phát hành, cũng là nền tảng của ChromeOS chạy trên các máy Chromebook.
-colorburst không phải là ChromeOS và không liên kết với Google.
+colorburst is a free operating system for ordinary PCs. You can install, use,
+copy and modify it, at no cost.
 
-> **Đây là bản thử nghiệm.** Dự án đang ở giai đoạn đầu, nên đừng kỳ vọng mọi
-> thứ chạy trơn tru. Nhiều chỗ trong giao diện vẫn tự xưng là "Chrome" hoặc
-> "Chromium" — phần thương hiệu chưa được thay hết, không phải cố ý.
+It is built from the source of **ChromiumOS** — the open-source code Google
+publishes, which is also the basis of the ChromeOS that runs on Chromebooks.
+colorburst is not ChromeOS and is not affiliated with Google.
 
-## Dành cho ai
+> **This is experimental.** The project is early. Expect rough edges, and parts
+> of the interface that still call themselves "Chrome" or "Chromium" — the
+> rebranding is incomplete, not deliberate.
 
-colorburst hướng tới sự đơn giản: học sinh – sinh viên, nhân viên văn phòng và
-người lớn tuổi. Máy có trình duyệt và những thứ cần thiết, không có gì phải học
-thêm, cũng không có gì để cấu hình.
+## What it does differently
 
-Chạy được trên máy để bàn hoặc laptop sản xuất trong khoảng **10 năm trở lại
-đây**.
+- **The account lives on the machine.** You create it on first boot. No Google
+  account, and no network needed to sign in.
+- **No Google services.** Nothing is sent anywhere to log in or to use the
+  machine.
+- **It updates itself** from colorburst's own update server.
 
-## Điểm khác biệt chính
+## Who it is for
 
-- **Tài khoản cục bộ.** Ngay trong lần khởi động đầu tiên, bạn tự tạo một tài
-  khoản nằm trên chính máy của mình. Không cần tài khoản Google, không cần kết
-  nối mạng để đăng nhập.
-- **Giao diện tiếng Việt** được đặt làm mặc định.
-- **Gõ tiếng Việt có sẵn** — Telex (mặc định), VNI và VIQR, không cần cài thêm
-  gì. Chuyển đổi bằng biểu tượng **VI** ở góc dưới bên phải, hoặc Ctrl + Space.
-- **Tự cập nhật.** Máy nhận các bản vá qua máy chủ cập nhật của colorburst,
-  không qua Google.
+People who mainly use a web browser. There is nothing to learn and nothing to
+configure. It runs on a desktop or laptop made in roughly the **last ten
+years**.
 
-## Dùng thử từ USB
+## Try it from a USB stick
 
-Cách này chạy trên máy thật mà chưa cần cài đặt.
+This runs on real hardware without touching the internal disk.
 
-1. Tải tệp ảnh đĩa (`colorburst-<phiên bản>.bin.xz`) ở mục **Releases** trên
-   GitHub và chuẩn bị một USB dung lượng từ **16 GB**.
-2. Ghi tệp ảnh đĩa vào USB.
+1. Download `colorburst-<version>.zip` from
+   [Releases](https://github.com/colorburst-os/colorburst/releases). You need a
+   USB stick of **16 GB or more**.
+2. Write the image to the stick.
 
-   **Windows / macOS:** dùng [balenaEtcher](https://etcher.balena.io/) — chọn
-   thẳng tệp `.xz`, chương trình tự giải nén rồi ghi.
+   **Windows / macOS:** [balenaEtcher](https://etcher.balena.io/) accepts the
+   `.zip` directly.
 
    **Linux:**
 
    ```bash
-   unxz colorburst-<phiên bản>.bin.xz
-   sudo dd if=colorburst-<phiên bản>.bin of=/dev/sdX bs=4M status=progress conv=fsync
+   unzip colorburst-<version>.zip
+   sudo dd if=colorburst-<version>.bin of=/dev/sdX bs=4M status=progress conv=fsync
    ```
 
-   Thay `/dev/sdX` bằng USB của bạn. **Ghi nhầm ổ sẽ xoá sạch dữ liệu ổ đó** —
-   hãy kiểm tra kỹ bằng `lsblk`.
-3. Khởi động máy từ USB (thường bấm F12, F2 hoặc Esc lúc mới bật máy). Bạn có
-   thể cần tắt **Secure Boot** trong BIOS/UEFI.
+   Replace `/dev/sdX` with your stick. **Writing to the wrong disk erases it.**
+   Check with `lsblk` first.
+3. Boot from the stick — usually F12, F2 or Esc at power-on. You may need to
+   turn off **Secure Boot** in BIOS/UEFI.
 
-Chạy từ USB không đụng gì đến ổ cứng trong máy.
+> The current release starts in Vietnamese. The first screen has a language
+> selector; pick English there. Separate per-language images are coming.
 
-## Cài đặt vào máy
+## Install it
 
-Khởi động từ USB như trên, rồi chọn mục cài đặt trên màn hình chào.
+Boot from the stick, then choose the install option on the welcome screen.
 
-**Việc cài đặt sẽ xoá toàn bộ ổ đĩa được chọn.** Hãy sao lưu trước.
+**Installing erases the entire target disk.** Back up first.
 
-## Tài khoản
+## Your account
 
-Lần đầu khởi động, màn hình chào sẽ hỏi bạn muốn **dùng thử** hay **cài đặt**.
-Sau khi chọn, máy hỏi bạn muốn thiết lập theo cách nào — hãy chọn
-**"Create a local account"**, đặt một cái tên, rồi đặt mật khẩu.
+On the welcome screen, choose **"Create a local account"**, give it a name and
+a password.
 
-Tài khoản đó nằm trên máy của bạn. Không có tài khoản Google, không có gì được
-gửi đi đâu cả, và bạn đăng nhập được kể cả khi không có mạng.
+That account exists only on your machine. If you forget the password there is
+no recovery — nothing is stored on a server that could reset it for you.
 
-Nếu quên mật khẩu thì không có cách khôi phục — hiện chưa có, vì không có máy
-chủ nào giữ tài khoản giúp bạn.
+## Build it yourself
 
-## Tự biên dịch
+Everything builds in Docker; nothing is installed on your host. The toolchain
+and full instructions are in
+[chromiumos-devenv](https://github.com/colorburst-os/chromiumos-devenv).
 
-colorburst được biên dịch trong Docker, không cài gì lên máy chủ. Toàn bộ công
-cụ nằm ở kho `chromiumos-devenv`, kèm hướng dẫn chi tiết.
+Budget ~200 GB of disk and several hours for the first build.
 
-```bash
-./cros-sdk.sh bash -lc 'cd ~/chromiumos && cros_sdk -- cros build-packages --board=amd64-generic'
-./cros-sdk.sh bash -lc 'cd ~/chromiumos && cros_sdk -- cros build-image --board=amd64-generic test'
-```
+## Known limitations
 
-Ảnh đĩa sau khi biên dịch nằm ở:
+- No password recovery.
+- DRM content (Netflix and similar) does not play.
+- No hardware video decode, so heavy video costs more battery.
+- Branding is incomplete: the boot screen and some dialogs still say Chromium.
 
-```
-chromiumos/src/build/images/amd64-generic/latest/chromiumos_test_image.bin
-```
+## Origin and licence
 
-Máy biên dịch cần khoảng **200 GB ổ trống** và nhiều giờ cho lần đầu.
+colorburst is a fork of ChromiumOS. The original code belongs to the ChromiumOS
+authors under the BSD 3-clause licence; other components keep their own.
 
-## Tham gia phát triển
+Not affiliated with Google. "Chrome", "ChromeOS" and "Chromebook" are Google
+trademarks.
 
-Còn rất nhiều việc phải làm. Nếu bạn biết Linux và muốn góp sức xây dựng, rất
-hoan nghênh — từ báo lỗi, dịch thuật, cho tới viết mã.
+## About the name
 
-Discord: _(sẽ cập nhật)_
+On analogue colour television (NTSC, PAL), every scan line opens with a short
+burst of signal — a few cycles of the colour subcarrier, about 3.58 MHz on
+NTSC. It carries no picture. Its only job is to give the receiver's oscillator
+a phase reference. Without it the picture still appears, but the colours are
+wrong.
 
-## Hạn chế / TODO
-
-- **Chưa khôi phục được mật khẩu** nếu bạn quên.
-- Chạy thử trong máy ảo hiện chỉ dành cho người phát triển, chưa dùng được cho
-  người thường — hãy dùng USB.
-- Nội dung có bản quyền số (DRM) — Netflix và tương tự chưa xem được.
-- Chưa tăng tốc giải mã video bằng phần cứng, nên video nặng sẽ tốn pin hơn.
-- Bộ gõ tiếng Việt mới ở mức cơ bản; người quen gõ nhanh sẽ thấy còn vụng.
-- Phần thương hiệu chưa thay hết: màn hình khởi động và vài chỗ vẫn là Chromium.
-
-## Nguồn gốc và giấy phép
-
-colorburst là một bản phân nhánh (fork) của ChromiumOS. Mã nguồn gốc thuộc về
-các tác giả ChromiumOS và được phát hành theo giấy phép BSD 3 điều khoản; các
-thành phần khác giữ nguyên giấy phép của chúng.
-
-Dự án không có liên hệ với Google. "Chrome", "ChromeOS" và "Chromebook" là
-thương hiệu của Google.
-
-## Về cái tên
-
-Trên truyền hình analog màu (NTSC, PAL), mỗi dòng quét đều mở đầu bằng một đoạn
-tín hiệu ngắn gọi là *colorburst* — vài chu kỳ của sóng mang màu, khoảng
-3,58 MHz với NTSC. Bản thân nó không mang hình ảnh; nhiệm vụ duy nhất của nó là
-cho bộ dao động trong máy thu một mốc pha để so. Không có đoạn tín hiệu đó, máy
-thu vẫn hiện hình nhưng màu sẽ sai.
-
-Một tín hiệu tham chiếu nhỏ, lặp lại đều đặn, để phần còn lại hiển thị đúng.
+A small repeated reference, so that everything else comes out right.
