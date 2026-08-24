@@ -80,7 +80,6 @@ Budget ~200 GB of disk and several hours for the first build.
 
 - No password recovery.
 - DRM content (Netflix and similar) does not play.
-- No hardware video decode, so heavy video costs more battery.
 - Branding is incomplete: the boot screen and some dialogs still say Chromium.
 
 ## Origin and licence

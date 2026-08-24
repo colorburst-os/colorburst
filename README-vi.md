@@ -79,7 +79,6 @@ Cần khoảng **200 GB ổ trống** và vài giờ cho lần biên dịch đ�
 
 - Chưa khôi phục được mật khẩu nếu quên.
 - Nội dung có bản quyền số (DRM) — Netflix và tương tự chưa xem được.
-- Chưa tăng tốc giải mã video bằng phần cứng, nên video nặng tốn pin hơn.
 - Bộ gõ tiếng Việt mới ở mức cơ bản; người quen gõ nhanh sẽ thấy còn vụng.
 - Phần thương hiệu chưa thay hết: màn hình khởi động và vài chỗ vẫn là Chromium.
 
